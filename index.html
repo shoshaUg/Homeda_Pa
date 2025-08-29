@@ -54,6 +54,7 @@
             background-color: var(--light);
             scroll-behavior: smooth;
             transition: background-color 0.3s ease;
+            overflow-x: hidden;
         }
         
         .container {
@@ -835,7 +836,15 @@
         }
         
         /* Responsive Design - Media Queries */
-        @media (max-width: 992px) {
+        /* Large devices (desktops, less than 1200px) */
+        @media (max-width: 1199.98px) {
+            .hero-text h1 {
+                font-size: 3rem;
+            }
+        }
+        
+        /* Medium devices (tablets, less than 992px) */
+        @media (max-width: 991.98px) {
             .hero-content, .about-content {
                 flex-direction: column;
             }
@@ -853,26 +862,38 @@
             .hero-text p {
                 max-width: 100%;
             }
+            
+            .about-image:before {
+                width: 80%;
+                left: 10%;
+            }
+            
+            .contact-container {
+                gap: 30px;
+            }
         }
         
-        @media (max-width: 768px) {
+        /* Small devices (landscape phones, less than 768px) */
+        @media (max-width: 767.98px) {
             .menu-btn {
                 display: block;
             }
             
             .nav-links {
                 position: fixed;
-                height: 80vh;
+                height: 100vh;
                 width: 70%;
+                max-width: 300px;
                 top: 0;
                 left: 0;
                 background: var(--light);
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                clip-path: circle(0px at top right);
+                clip-path: circle(0px at top left);
                 transition: var(--transition);
                 z-index: 999;
+                padding: 50px 20px;
             }
 
             .dark-mode .nav-links {
@@ -880,7 +901,7 @@
             }
             
             .nav-links.active {
-                clip-path: circle(1500px at top right);
+                clip-path: circle(1500px at top left);
             }
             
             .nav-links li {
@@ -889,8 +910,8 @@
             
             .close-btn {
                 position: absolute;
-                top: 30px;
-                right: 30px;
+                top: 20px;
+                right: 20px;
                 font-size: 1.5rem;
                 cursor: pointer;
                 color: var(--dark);
@@ -914,26 +935,60 @@
             }
             
             .footer-links {
-                flex-direction: column;
+                flex-wrap: wrap;
+                justify-content: center;
             }
             
             .footer-links li {
-                margin: 7px 0;
+                margin: 7px 10px;
             }
 
             .btn-outline {
                 margin-left: 0;
                 margin-top: 15px;
             }
+            
+            .about-image:before {
+                display: none;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .social-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .social-link {
+                margin: 5px;
+            }
         }
         
-        @media (max-width: 576px) {
+        /* Extra small devices (portrait phones, less than 576px) */
+        @media (max-width: 575.98px) {
             .hero-text h1 {
                 font-size: 2rem;
             }
             
             .btn {
                 padding: 10px 20px;
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+            
+            .btn-outline {
+                margin-top: 0;
             }
             
             .section-title h2 {
@@ -944,25 +999,92 @@
                 padding: 20px;
             }
             
-            .contact-item {
-                flex-direction: column;
-                text-align: center;
+            .hero-image img {
+                max-width: 85%;
             }
             
-            .contact-icon {
-                margin-right: 0;
-                margin-bottom: 10px;
+            .about-image img {
+                max-width: 85%;
             }
-
+            
+            .floating-icon {
+                font-size: 1.5rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+            }
+            
             .footer-links li {
-                margin: 7px 5px;
+                margin: 5px 0;
             }
-
-            .about-image:before {
-                display: none;
+            
+            .achievement-card {
+                min-width: 250px;
+            }
+            
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .hero, .about, .skills, .achievements, .projects, .contact {
+                padding: 80px 0;
+            }
+            
+            .section-title {
+                margin-bottom: 40px;
+            }
+            
+            .section-title p {
+                padding: 0 10px;
             }
         }
-           #loading-screen {
+        
+        /* Very small devices (less than 400px) */
+        @media (max-width: 399.98px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo img {
+                width: 30px;
+                height: 30px;
+            }
+            
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero-text p {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .skill-category h3, .about-text h3 {
+                font-size: 1.4rem;
+            }
+            
+            .footer-logo {
+                font-size: 1.6rem;
+            }
+            
+            .social-link {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            .contact-form {
+                padding: 20px 15px;
+            }
+        }
+        
+        /* Loading Screen */
+        #loading-screen {
             position: fixed;
             top: 0;
             left: 0;
@@ -982,7 +1104,7 @@
             height: 120px;
             margin-bottom: 20px;
             border-radius: 50%;
-            
+
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1062,7 +1184,8 @@
                 border-width: 3px;
             }
         }
-          .copyright {
+        
+        .copyright {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 20px;
             width: 100%;
@@ -1083,7 +1206,7 @@
             margin-right: 5px;
         }
         
-        /* Responsive design */
+        /* Responsive design for copyright */
         @media (max-width: 768px) {
             .copyright {
                 font-size: 0.9rem;
@@ -1093,9 +1216,13 @@
         @media (max-width: 480px) {
             .copyright {
                 font-size: 0.8rem;
+                padding: 0 10px;
+            }
+            
+            .copyright p {
+                margin-bottom: 10px;
             }
         }
-
 </style>
 </head>
 <body>
@@ -1563,7 +1690,7 @@ const FloatingIcons = () => {
                                     </div>
                                     <div className="contact-details">
                                         <h3>Email</h3>
-                                        <p>stkaddofo@st.ug.edu.ghcom</p>
+                                        <p>stkaddofo@st.ug.edu.gh.com</p>
                                     </div>
                                 </div>
                                 
@@ -1664,7 +1791,8 @@ const FloatingIcons = () => {
                             <div className="social-links">
                                 <a href="#" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-facebook-f"></i></a>
                                 <a href="#" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-twitter"></i></a>
-                                <a href="https://www.tiktok.com/@homedapa" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-tiktok"></i></a>
+                                <a href="https://wa.me/+233534268869" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-whatsapp"></i></a><br />
+                                <a href="https://www.tiktok.com/@homedapa" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-tiktok"></i></a><br />
                                 <a href="https://www.instagram.com/@homedapa.043" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-instagram"></i></a>
                                 <a href="https://www.snapchat.com/add/@homedapa" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-snapchat"></i></a>
                                 <a href="#" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-linkedin-in"></i></a>
@@ -1672,7 +1800,7 @@ const FloatingIcons = () => {
                             </div>
                             
                               <div class="copyright">
-                                <p>&copy; 2023 Shadrack Addo. All Rights Reserved.</p>
+                                <p>&copy; 2023 S.T.K.ADDOFO . All Rights Reserved.</p>
                                 <h5 >
                                 Powered by 
                                 <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
