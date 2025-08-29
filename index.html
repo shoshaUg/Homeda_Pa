@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.T.K.ADDOFO-Portfolio</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="My Pics/1000225519-removebg-preview.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    
+      :root {
+    --primary: #383cf7;
+    --primary-dark: #4239eb;
+    --secondary: #ea3992;
+    --dark: #3f4b5b;
+    --darker: #111827;
+    --light: #f9fafb;
+    --gray: #6b7280;
+    --light-gray: #e5e7eb;
+    --transition: all 0.3s ease;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 12px;
+}
+
+.dark-mode {
+    --primary: #818cf8;
+    --primary-dark: #a7a8f1;
+    --secondary: #f6b4d6;
+    --dark: #fbfbff;
+    --darker: #2a2727;
+    --light: #1f2937;
+    --gray: #33373d;
+    --light-gray: #374151;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.754), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.847);
+}
+
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: var(--light);
+            scroll-behavior: smooth;
+            transition: background-color 0.3s ease;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .dark-mode header {
+            background-color: rgba(31, 41, 55, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: var(--light-gray);
+            border: none;
+            width: 50px;
+            height: 26px;
+            border-radius: 15px;
+            padding: 3px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle span {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            display: block;
+            transition: var(--transition);
+            transform: translateX(0);
+        }
+
+        .dark-mode .theme-toggle span {
+            transform: translateX(24px);
+            background: var(--darker);
+        }
+
+        .dark-mode .theme-toggle {
+            background: var(--primary);
+        }
+
+        .menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e3e6ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dark-mode .hero {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-text {
+            flex: 1;
+            padding-right: 30px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.2;
+        }
+        
+        .hero-text h1 span {
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-text h1 span:after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: rgba(99, 102, 241, 0.2);
+            z-index: -1;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 90%;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-image img {
+            max-width: 70%;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            box-shadow: var(--shadow);
+            border: 5px solid white;
+            animation: morphing 10s infinite ease-in-out;
+        }
+
+        .dark-mode .hero-image img {
+            border: 5px solid var(--light);
+        }
+
+        @keyframes morphing {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
+            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
+            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        }
+
+        .floating-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: rgba(113, 115, 237, 0.1);
+            font-size: 2rem;
+            animation: float 15s infinite linear;
+        }
+
+        .dark-mode .floating-icon {
+            color: rgba(255, 255, 255, 0.1);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+        
+        .about-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .about-image img {
+            max-width: 60%;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+        .about-image:before {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: auto;
+            border: 3px solid var(--primary);
+            border-radius: var(--border-radius);
+            top: 15px;
+            left: 15px;
+            z-index: -1;
+        }
+        
+        /* Skills Section */
+        .skills {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e3e6ff 100%);
+        }
+
+        .dark-mode .skills {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .skill-category {
+            background: var(--light);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode .skill-category {
+            background: var(--darker);
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+        }
+        
+        .skill-category h3 i {
+            margin-right: 10px;
+            color: var(--primary);
+        }
+        
+        .skill-item {
+            margin-bottom: 15px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .skill-bar {
+            height: 10px;
+            background: var(--light-gray);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 5px;
+            position: relative;
+            transition: width 1s ease;
+        }
+
+        .skill-progress:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.2) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0.2) 75%, transparent 75%, transparent);
+            z-index: 1;
+            background-size: 20px 20px;
+            animation: move 1s linear infinite;
+            border-radius: 5px;
+        }
+
+        @keyframes move {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 0; }
+        }
+        
+        /* Achievements Section */
+        .achievements {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+
+        .achievements-container {
+            display: flex;
+            gap: 30px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scrollbar-width: thin;
+            scrollbar-color: var(--primary) var(--light-gray);
+        }
+
+        .achievements-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .achievements-container::-webkit-scrollbar-track {
+            background: var(--light-gray);
+            border-radius: 10px;
+        }
+
+        .achievements-container::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 10px;
+        }
+
+        .achievement-card {
+            min-width: 300px;
+            background: var(--light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dark-mode .achievement-card {
+            background: var(--darker);
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .achievement-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .achievement-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .achievement-card:hover .achievement-image img {
+            transform: scale(1.1);
+        }
+        
+        .achievement-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .achievement-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .achievement-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+        
+        .achievement-date {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7ff 0%, #e3e6ff 100%);
+        }
+
+        .dark-mode .projects {
+            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        }
+        
+        .projects-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--light);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+        }
+
+        .dark-mode .project-card {
+            background: var(--darker);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+        
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .project-card:hover .project-image img {
+            transform: scale(1.1);
+        }
+        
+        .project-info {
+            padding: 20px;
+        }
+        
+        .project-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+        
+        .project-info p {
+            color: var(--gray);
+            margin-bottom: 15px;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .project-tag {
+            background: var(--light-gray);
+            color: var(--gray);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: var(--light);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            margin-right: 15px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-details h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .contact-details p {
+            color: var(--gray);
+        }
+        
+        .contact-form {
+            background: var(--light);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .dark-mode .contact-form {
+            background: var(--darker);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--light);
+            color: var(--dark);
+        }
+
+        .dark-mode .form-control {
+            background: var(--light);
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--darker);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .footer-links {
+            display: flex;
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .footer-links li {
+            margin: 0 15px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            width: 100%;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        /* Responsive Design - Media Queries */
+        @media (max-width: 992px) {
+            .hero-content, .about-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .about-text {
+                padding-right: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-text p {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                height: 80vh;
+                width: 70%;
+                top: 0;
+                left: 0;
+                background: var(--light);
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                clip-path: circle(0px at top right);
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .dark-mode .nav-links {
+                background: var(--darker);
+            }
+            
+            .nav-links.active {
+                clip-path: circle(1500px at top right);
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .close-btn {
+                position: absolute;
+                top: 30px;
+                right: 30px;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--dark);
+                z-index: 1000;
+            }
+
+            .dark-mode .close-btn {
+                color: var(--light);
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .footer-links {
+                flex-direction: row;
+            }
+            
+            .footer-links li {
+                margin: 7px 5px;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .skill-category, .project-card, .contact-form {
+                padding: 20px;
+            }
+            
+            .contact-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .footer-links li {
+                margin: 7px 5px;
+            }
+
+            .about-image:before {
+                display: none;
+            }
+        }
+           #loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1341f9, #1f41b253, #1d1d1d);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loading-logo {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: pulse 1.5s infinite alternate;
+        }
+        
+        .loading-logo img {
+            width: 110px;
+            height: auto;
+            border-radius: 50%;
+        }
+        
+        .loading-text {
+            color: rgb(0, 0, 0);
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-top: 20px;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Hide content initially */
+        #main-content {
+            opacity: 0;
+            transition: opacity 0.5s ease-in;
+        }
+        
+        /* Media Queries for Loading Screen */
+        @media (max-width: 768px) {
+            .loading-logo {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .loading-text {
+                font-size: 1.2rem;
+            }
+            
+            .loading-spinner {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .loading-logo {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .loading-text {
+                font-size: 1rem;
+                text-align: center;
+                padding: 0 20px;
+            }
+            
+            .loading-spinner {
+                width: 30px;
+                height: 30px;
+                border-width: 3px;
+            }
+        }
+          .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            width: 100%;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .copyright a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: #8b5cf6;
+        }
+        
+        .copyright .fab {
+            margin-right: 5px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .copyright {
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .copyright {
+                font-size: 0.8rem;
+            }
+        }
+
+</style>
+</head>
+<body>
+        <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-logo">
+            <img src="My Pics/1000225519-removebg-preview.png" alt="Loading Logo">
+        </div>
+        <h3 style="color: #1216f0; font-weight: 700; font-size: 2.2rem; margin-bottom: 20px;">
+            S.T.K.ADDOFO<span style="color: #f2137b;">.</span> 
+        </h3>
+ 
+        <div class="loading-spinner"></div>
+        <div class="loading-text">Loading Portfolio...</div>
+    </div>
+<div id="main-content">
+    <div id="root"></div>
+</div>
+    <script type="text/babel">
+        // React Components
+        const { useState, useEffect, useRef } = React;
+
+        // Floating Icons Component
+const FloatingIcons = () => {
+    const [icons] = useState([
+        '🔍', '💻', '🎨', '📱', '🚀', '⚡', '🖌️', '🎬', '📊', '🌐',
+        '🎯', '💡', '📝', '🎮', '📸', '🎵', '🎥', '🖥️', '💾', '📀',
+        '🛠️', '🔧', '📱', '📡', '🔌', '💎', '📐', '🧩', '📈', '📉',
+        '🔒', '🔓', '📌', '📍', '🖼️', '🎭', '🤖', '👨‍💻', '👩‍🎨', '📚',
+        '🎓', '🏆', '⭐', '❤️', '🔥', '✨', '🌈', '🌙', '☀️', '🌟'
+    ]);
+    
+    return (
+        <div className="floating-icons">
+            {icons.map((icon, index) => (
+                <div 
+                    key={index}
+                    className="floating-icon"
+                    style={{
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        animationDelay: `${Math.random() * 15}s`,
+                        animationDuration: `${15 + Math.random() * 10}s`,
+                        fontSize: `${20 + Math.random() * 20}px`,
+                        opacity: `${0.2 + Math.random() * 0.3}`
+                    }}
+                >
+                    {icon}
+                </div>
+            ))}
+        </div>
+            );
+            };
+
+        // Achievement Data
+        const achievementData = [
+              {
+                id: 1,
+                title: "Teens in AI",
+                description: "Received special recognition for participating in the Global Teens in AI from the African Tech Innovation Council.",
+                date: "May 2025",
+                image: "https://placehold.co/600x400/6366f1/FFFFFF?text=Teens+In+AI"
+            },
+
+            {
+                id: 2,
+                title: "Best Video Editing Project",
+                description: "Won first place in Abeka SDA Church's annual digital media competition for my innovative video editing techniques.",
+                date: "June 2023",
+                image: "https://placehold.co/600x400/4a6cf7/FFFFFF?text=Video+Editing"
+            },
+           
+            {
+                id: 3,
+                title: "Graphic Design Excellence Award",
+                description: "Recognized for outstanding creativity in graphic design by the Ghana Design Association.",
+                date: "February 2023",
+                image: "https://placehold.co/600x400/ec4899/FFFFFF?text=Graphic+Design"
+            },
+            {
+                id: 4,
+                title: "Hackathon Finalist",
+                description: "Placed in the top 5 teams at the National University Hackathon for developing an innovative educational platform.",
+                date: "November 2025",
+                image: "https://placehold.co/600x400/4a6cf7/FFFFFF?text=Hackathon"
+            },
+           {
+                id: 5,
+                title: "Frontend Development Certification",
+                description: "Completed advanced React development course with honors, building multiple responsive web applications.",
+                date: "April 2025",
+                image: "https://placehold.co/600x400/6366f1/FFFFFF?text=React+Dev"
+            }
+        ];
+
+        // Achievement Card Component
+        const AchievementCard = ({ achievement }) => {
+            return (
+                <div className="achievement-card">
+                    <div className="achievement-image">
+                        <img src={achievement.image} alt={achievement.title} />
+                    </div>
+                    <div className="achievement-info">
+                        <span className="achievement-date">{achievement.date}</span>
+                        <h3>{achievement.title}</h3>
+                        <p>{achievement.description}</p>
+                    </div>
+                </div>
+            );
+        };
+
+        // Navigation Component
+        const Navigation = ({ darkMode, toggleDarkMode }) => {
+            const [menuActive, setMenuActive] = useState(false);
+
+            return (
+                <header>
+                    <div className="container">
+                        <nav>
+                            <div className="logo">
+                                <img src="My Pics/1000225519-removebg-preview.png" alt="Logo" />
+                                S.T.K.ADDOFO<span>.</span>
+                            </div>
+                            <ul className={`nav-links ${menuActive ? 'active' : ''}`}>
+                                <li><a href="#home" onClick={() => setMenuActive(false)}>Home</a></li>
+                                <li><a href="#about" onClick={() => setMenuActive(false)}>About</a></li>
+                                <li><a href="#skills" onClick={() => setMenuActive(false)}>Skills</a></li>
+                                <li><a href="#achievements" onClick={() => setMenuActive(false)}>Achievements</a></li>
+                                <li><a href="#projects" onClick={() => setMenuActive(false)}>Projects</a></li>
+                                <li><a href="#contact" onClick={() => setMenuActive(false)}>Contact</a></li>
+                                <div className="close-btn" onClick={() => setMenuActive(false)}>
+                                    <i className="fas fa-times"></i>
+                                </div>
+                            </ul>
+                            <div className="nav-actions">
+                                <button className="theme-toggle" onClick={toggleDarkMode}>
+                                    <span></span>
+                                </button>
+                                <div className="menu-btn" onClick={() => setMenuActive(true)}>
+                                    <i className="fas fa-bars"></i>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </header>
+            );
+        };
+
+        // Hero Section Component
+        const HeroSection = () => {
+            return (
+                <section className="hero" id="home">
+                    <FloatingIcons />
+                    <div className="container">
+                        <div className="hero-content">
+                            <div className="hero-text">
+                                <h1>Hi, I'm <span>Shadrack T.K. Addofo</span></h1>
+                                <p>A passionate Frontend Developer, Video Editor, and Graphic Designer from Ghana. Currently studying Bsc. Information Technology at the University of Ghana, I create engaging digital experiences that combine creativity with technical expertise.</p>
+                                <div>
+                                    <a href="#projects" className="btn">View My Work</a>
+                                    <a href="#contact" className="btn btn-outline">Get In Touch</a>
+                                </div>
+                            </div>
+                            <div className="hero-image">
+                                <img src="shaddy.jpeg" alt="Shadrack Addo"  />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // About Section Component
+        const AboutSection = () => {
+            return (
+                <section className="about" id="about">
+                    <div className="container">
+                        <div className="section-title">
+                            <h2>About Me</h2>
+                            <p>Get to know more about my background, education, and passions</p>
+                        </div>
+                        <div className="about-content">
+                            <div className="about-text">
+                                <h3>I create products that are both functional and beautiful</h3>
+                                <p>Hello! I'm Shadrack Twenewboah Koduah Addofo(S.T.K.ADDOFO), born on June 3rd. I'm currently a student at the University of Ghana,Legon Campus, where I'm pursuing my academic goals while developing my skills in technology and design.</p>
+                                <p>My journey in the digital world started with a passion for creativity, which led me to explore video editing and graphic design. As I delved deeper, I discovered my love for frontend development, where I can combine technical skills with design principles to create engaging web experiences.</p>
+                                <p>When I'm not coding or designing, you can find me exploring new technologies, working on personal projects, or learning new techniques to enhance my skillset.</p>
+                                <a href="#contact" className="btn">Get In Touch</a>
+                            </div>
+                            <div className="about-image">
+                                <img src="My Pics/mat.jpg" alt="About Shadrack" />
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Skills Section Component
+        const SkillsSection = () => {
+            return (
+                <section className="skills" id="skills">
+                    <div className="container">
+                        <div className="section-title">
+                            <h2>My Skills</h2>
+                            <p>Here are the technologies and tools I work with</p>
+                        </div>
+                        <div className="skills-container">
+                            <div className="skill-category">
+                                <h3><i className="fas fa-code"></i> Frontend Development</h3>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>HTML/CSS</span>
+                                        <span>90%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '90%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>JavaScript</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '75%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>React</span>
+                                        <span>45%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '45%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>Bootstrap</span>
+                                        <span>55%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '55%'}}></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="skill-category">
+                                <h3><i className="fas fa-paint-brush"></i> Graphic Design</h3>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>Adobe Photoshop</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '85%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>Adobe Illustrator</span>
+                                        <span>50%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '50%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>Figma</span>
+                                        <span>80%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '80%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>UI/UX Design</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '75%'}}></div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="skill-category">
+                                <h3><i className="fas fa-video"></i> Video Editing</h3>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>Adobe Premiere Pro</span>
+                                        <span>60%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '60%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>After Effects</span>
+                                        <span>50%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '50%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>CapCut</span>
+                                        <span>75%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '75%'}}></div>
+                                    </div>
+                                </div>
+                                <div className="skill-item">
+                                    <div className="skill-name">
+                                        <span>Motion Graphics</span>
+                                        <span>50%</span>
+                                    </div>
+                                    <div className="skill-bar">
+                                        <div className="skill-progress" style={{width: '50%'}}></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Achievements Section Component
+        const AchievementsSection = () => {
+            return (
+                <section className="achievements" id="achievements">
+                    <div className="container">
+                        <div className="section-title">
+                            <h2>My Achievements</h2>
+                            <p>Recognition and accomplishments throughout my journey</p>
+                        </div>
+                        <div className="achievements-container">
+                            {achievementData.map(achievement => (
+                                <AchievementCard key={achievement.id} achievement={achievement} />
+                            ))}
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Projects Section Component
+        const ProjectsSection = () => {
+            return (
+                <section className="projects" id="projects">
+                    <div className="container">
+                        <div className="section-title">
+                            <h2>My Projects</h2>
+                            <p>Here are some of my recent works</p>
+                        </div>
+                        <div className="projects-container">
+                            <div className="project-card">
+                                <div className="project-image">
+                                    <img src="My Pics/church.png" alt="Project 1" />
+                                </div>
+                                <div className="project-info">
+                                    <h3>Church Website</h3>
+                                    <p>A fully responsive Church website platform built with HTML,CSS and Javascript.</p>
+                                    <div className="project-tags">
+                                        <span className="project-tag">HTML</span>
+                                        <span className="project-tag">CSS</span>
+                                        <span className="project-tag">JAVASCRIPT</span>
+                                    </div>
+                                    <a href="https://shoshaug.github.io/Abeka-SDA-Church-Website/" target="_blank" rel="noopener noreferrer" className="btn">View Project</a>
+                                </div>
+                            </div>
+                            
+                            <div className="project-card">
+                                <div className="project-image">
+                                    <img src="My Pics/Screenshot 2025-08-29 144352.png" alt="Project 2" />
+                                </div>
+                                <div className="project-info">
+                                    <h3>Food Blog Site</h3>
+                                    <p>A web application that introduce Ghanaian Traditional Recipes with their benefits.</p>
+                                    <div className="project-tags">
+                                        <span className="project-tag">HTML</span>
+                                        <span className="project-tag">React</span>
+                                        <span className="project-tag">CSS</span>
+                                    </div>
+                                    <a href="https://shoshaug.github.io/Akwaaba-Kitchen/" target="_blank" rel="noopener noreferrer"  className="btn">View Project</a>
+                                </div>
+                            </div>
+                            
+                            <div className="project-card">
+                                <div className="project-image">
+                                    <img src="My Pics/Screenshot 2025-08-23 075733.png" alt="Project 3" />
+                                </div>
+                                <div className="project-info">
+                                    <h3>A Documentary Video</h3>
+                                    <p>A documentary video for a Churchs with motion graphics and effects.</p>
+                                    <div className="project-tags">
+                                        <span className="project-tag">Premiere Pro</span>
+                                        <span className="project-tag">After Effects</span>
+                                        <span className="project-tag">Motion Graphics</span>
+                                    </div>
+                                    <a href="https://tiktok.com/@abeka_sda_church" target="_blank" rel="noopener noreferrer" className="btn">View Project</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Contact Section Component
+        const ContactSection = () => {
+            const [formData, setFormData] = useState({
+                name: '',
+                email: '',
+                subject: '',
+                message: ''
+            });
+
+            const handleChange = (e) => {
+                setFormData({
+                    ...formData,
+                    [e.target.name]: e.target.value
+                });
+            };
+
+            const handleSubmit = (e) => {
+                e.preventDefault();
+                alert('Thanks for your message! I\'ll get back to you soon.');
+                setFormData({
+                    name: '',
+                    email: '',
+                    subject: '',
+                    message: ''
+                });
+            };
+
+            return (
+                <section className="contact" id="contact">
+                    <div className="container">
+                        <div className="section-title">
+                            <h2>Contact Me</h2>
+                            <p>Get in touch for collaborations or just say hello</p>
+                        </div>
+                        <div className="contact-container">
+                            <div className="contact-info">
+                                <div className="contact-item">
+                                    <div className="contact-icon">
+                                        <i className="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div className="contact-details">
+                                        <h3>Location</h3>
+                                        <p>University of Ghana, Legon</p>
+                                    </div>
+                                </div>
+                                
+                                <div className="contact-item">
+                                    <div className="contact-icon">
+                                        <i className="fas fa-envelope"></i>
+                                    </div>
+                                    <div className="contact-details">
+                                        <h3>Email</h3>
+                                        <p>stkaddofo@st.ug.edu.ghcom</p>
+                                    </div>
+                                </div>
+                                
+                                <div className="contact-item">
+                                    <div className="contact-icon">
+                                        <i className="fas fa-phone"></i>
+                                    </div>
+                                    <div className="contact-details">
+                                        <h3>Phone</h3>
+                                        <p>+233 534-268-869 / +233 209-955-675</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div className="contact-form">
+                                <form onSubmit={handleSubmit}>
+                                    <div className="form-group">
+                                        <label htmlFor="name">Your Name</label>
+                                        <input 
+                                            type="text" 
+                                            id="name" 
+                                            name="name"
+                                            className="form-control" 
+                                            placeholder="Enter your name" 
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            required 
+                                        />
+                                    </div>
+                                    
+                                    <div className="form-group">
+                                        <label htmlFor="email">Your Email</label>
+                                        <input 
+                                            type="email" 
+                                            id="email" 
+                                            name="email"
+                                            className="form-control" 
+                                            placeholder="Enter your email" 
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            required 
+                                        />
+                                    </div>
+                                    
+                                    <div className="form-group">
+                                        <label htmlFor="subject">Subject</label>
+                                        <input 
+                                            type="text" 
+                                            id="subject" 
+                                            name="subject"
+                                            className="form-control" 
+                                            placeholder="Enter subject" 
+                                            value={formData.subject}
+                                            onChange={handleChange}
+                                            required 
+                                        />
+                                    </div>
+                                    
+                                    <div className="form-group">
+                                        <label htmlFor="message">Your Message</label>
+                                        <textarea 
+                                            id="message" 
+                                            name="message"
+                                            className="form-control" 
+                                            placeholder="Enter your message" 
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            required
+                                        ></textarea>
+                                    </div>
+                                    
+                                    <button type="submit" className="btn">Send Message</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            );
+        };
+
+        // Footer Component
+        const Footer = () => {
+            return (
+                <footer>
+                    <div className="container">
+                        <div className="footer-content">
+                            <div className="footer-logo">S.T.K.ADDOFO<span>.</span></div>
+                            
+                            <ul className="footer-links">
+                                <li><a href="#home">Home</a></li>
+                                <li><a href="#about">About</a></li>
+                                <li><a href="#skills">Skills</a></li>
+                                <li><a href="#achievements">Achievements</a></li>
+                                <li><a href="#projects">Projects</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+                            
+                            <div className="social-links">
+                                <a href="#" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-facebook-f"></i></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-twitter"></i></a>
+                                <a href="https://www.tiktok.com/@homedapa" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-tiktok"></i></a>
+                                <a href="https://www.instagram.com/@homedapa.043" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-instagram"></i></a>
+                                <a href="https://www.snapchat.com/add/@homedapa" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-snapchat"></i></a>
+                                <a href="#" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.github.com/shoshaUg" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-github"></i></a>
+                            </div>
+                            
+                              <div class="copyright">
+                                <p>&copy; 2023 Shadrack Addo. All Rights Reserved.</p>
+                                <h5 >
+                                Powered by 
+                                <a href="https://github.com/" target="_blank" rel="noopener noreferrer">
+                                    <i class="fab fa-github"></i> GitHub
+                                </a>
+                            </h5>
+                              </div>
+                        </div>
+                    </div>
+                </footer>
+            );
+        };
+
+        // Main App Component
+        const App = () => {
+            const [darkMode, setDarkMode] = useState(false);
+
+            useEffect(() => {
+                if (darkMode) {
+                    document.body.classList.add('dark-mode');
+                } else {
+                    document.body.classList.remove('dark-mode');
+                }
+            }, [darkMode]);
+
+            const toggleDarkMode = () => {
+                setDarkMode(!darkMode);
+            };
+
+            // Animate skill bars on scroll
+            useEffect(() => {
+                const animateSkills = () => {
+                    const skillBars = document.querySelectorAll('.skill-progress');
+                    skillBars.forEach(bar => {
+                        const width = bar.style.width;
+                        bar.style.width = '0';
+                        setTimeout(() => {
+                            bar.style.width = width;
+                        }, 300);
+                    });
+                };
+
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateSkills();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 });
+
+                const skillsSection = document.querySelector('.skills');
+                if (skillsSection) {
+                    observer.observe(skillsSection);
+                }
+
+                return () => {
+                    if (skillsSection) {
+                        observer.unobserve(skillsSection);
+                    }
+                };
+            }, []);
+
+            return (
+                <div className="App">
+                    <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+                    <HeroSection />
+                    <AboutSection />
+                    <SkillsSection />
+                    <AchievementsSection />
+                    <ProjectsSection />
+                    <ContactSection />
+                    <Footer />
+                </div>
+            );
+        };
+
+        window.addEventListener('load', function() {
+            // Add a small delay for better UX (so loading screen doesn't flash too quickly)
+            setTimeout(function() {
+                const loadingScreen = document.getElementById('loading-screen');
+                const mainContent = document.getElementById('main-content');
+                
+                // Fade out loading screen
+                loadingScreen.style.opacity = '0';
+                
+                // Fade in main content
+                mainContent.style.opacity = '1';
+                
+                // Remove loading screen from DOM after fade out completes
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500); // Match this with the CSS transition time
+            }, 3000); // Adjust this time as needed (1500 = 1.5 seconds)
+        });
+        
+        // Fallback: if page takes too long to load, still show content
+        setTimeout(function() {
+            const loadingScreen = document.getElementById('loading-screen');
+            const mainContent = document.getElementById('main-content');
+            
+            if (loadingScreen.style.display !== 'none') {
+                loadingScreen.style.opacity = '0';
+                mainContent.style.opacity = '1';
+                
+                setTimeout(function() {
+                    loadingScreen.style.display = 'none';
+                }, 500);
+            }
+        }, 5000); // 5 second fallback
+
+        // Render the App
+        ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+</body>
+</html>
