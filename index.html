@@ -3,43 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S.T.K.ADDOFO-Portfolio</title>
+    <title>S.T.K.ADDOFO - Portfolio | Frontend Developer & Designer</title>
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Portfolio of Shadrack T.K. Addofo - Frontend Developer, Video Editor, and Graphic Designer from University of Ghana. Specializing in React, JavaScript, and creative digital solutions.">
+    <meta name="keywords" content="frontend developer, react developer, javascript, web design, video editing, graphic design, ghana developer, university of ghana">
+    <meta name="author" content="Shadrack T.K. Addofo">
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="S.T.K.ADDOFO - Portfolio | Frontend Developer & Designer">
+    <meta property="og:description" content="Portfolio of Shadrack T.K. Addofo - Frontend Developer, Video Editor, and Graphic Designer from University of Ghana">
+    <meta property="og:image" content="My Pics/1000225519-removebg-preview.png">
+    <meta property="og:url" content="https://stkaddofo.site">
+    <meta property="og:type" content="website">
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="S.T.K.ADDOFO - Portfolio">
+    <meta name="twitter:description" content="Frontend Developer, Video Editor and Graphic Designer">
+    <meta name="twitter:image" content="My Pics/1000225519-removebg-preview.png">
+    
     <link rel="icon" type="image/png" sizes="32x32" href="My Pics/1000225519-removebg-preview.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Add X/Twitter icon from Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-    
-      :root {
-    --primary: #383cf7;
-    --primary-dark: #4239eb;
-    --secondary: #ea3992;
-    --dark: #3f4b5b;
-    --darker: #111827;
-    --light: #f9fafb;
-    --gray: #6b7280;
-    --light-gray: #e5e7eb;
-    --transition: all 0.3s ease;
-    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --border-radius: 12px;
-}
+    <style>
+        :root {
+            --primary: #383cf7;
+            --primary-dark: #4239eb;
+            --secondary: #ea3992;
+            --dark: #2d3748;
+            --darker: #1a202c;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --light-gray: #e5e7eb;
+            --transition: all 0.3s ease;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+        }
 
-.dark-mode {
-    --primary: #818cf8;
-    --primary-dark: #a7a8f1;
-    --secondary: #f6b4d6;
-    --dark: #fbfbff;
-    --darker: #2a2727;
-    --light: #1f2937;
-    --gray: #33373d;
-    --light-gray: #374151;
-    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.754), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
-    --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.847);
-}
-
+        .dark-mode {
+            --primary: #818cf8;
+            --primary-dark: #a7a8f1;
+            --secondary: #f6b4d6;
+            --dark: #f7fafc;
+            --darker: #2d3748;
+            --light: #1a202c;
+            --gray: #cbd5e0;
+            --light-gray: #4a5568;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.754), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+            --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.847);
+        }
         
         * {
             margin: 0;
@@ -55,6 +71,12 @@
             scroll-behavior: smooth;
             transition: background-color 0.3s ease;
             overflow-x: hidden;
+        }
+        
+        /* Prevent scrolling during loading */
+        body.loading {
+            overflow: hidden;
+            height: 100vh;
         }
         
         .container {
@@ -77,7 +99,7 @@
         }
 
         .dark-mode header {
-            background-color: rgba(31, 41, 55, 0.8);
+            background-color: rgba(26, 32, 44, 0.8);
             backdrop-filter: blur(10px);
         }
         
@@ -184,6 +206,29 @@
             color: var(--dark);
         }
         
+        /* Donation Icon Button - Updated to match website color */
+        .donation-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+        
+        .donation-icon:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
         /* Hero Section */
         .hero {
             padding: 150px 0 100px;
@@ -193,7 +238,7 @@
         }
 
         .dark-mode .hero {
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
         }
         
         .hero-content {
@@ -280,22 +325,20 @@
         
         .hero-image img {
             max-width: 70%;
-            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border-radius: 20px;
             box-shadow: var(--shadow);
             border: 5px solid white;
-            animation: morphing 10s infinite ease-in-out;
+            animation: float 6s infinite ease-in-out;
         }
 
         .dark-mode .hero-image img {
             border: 5px solid var(--light);
         }
 
-        @keyframes morphing {
-            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
-            25% { border-radius: 58% 42% 75% 25% / 76% 46% 54% 24%; }
-            50% { border-radius: 50% 50% 33% 67% / 55% 27% 73% 45%; }
-            75% { border-radius: 33% 67% 58% 42% / 63% 68% 32% 37%; }
-            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
         }
 
         .floating-icons {
@@ -312,14 +355,14 @@
             position: absolute;
             color: rgba(113, 115, 237, 0.1);
             font-size: 2rem;
-            animation: float 15s infinite linear;
+            animation: float-icon 15s infinite linear;
         }
 
         .dark-mode .floating-icon {
             color: rgba(255, 255, 255, 0.1);
         }
 
-        @keyframes float {
+        @keyframes float-icon {
             0% { transform: translateY(0) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
@@ -412,7 +455,7 @@
         }
 
         .dark-mode .skills {
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
         }
         
         .skills-container {
@@ -505,7 +548,7 @@
             display: flex;
             gap: 30px;
             overflow-x: auto;
-            padding: 20px 0;
+            padding: 20px;
             scrollbar-width: thin;
             scrollbar-color: var(--primary) var(--light-gray);
         }
@@ -596,7 +639,7 @@
         }
 
         .dark-mode .projects {
-            background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
         }
         
         .projects-container {
@@ -640,6 +683,8 @@
         
         .project-info {
             padding: 20px;
+            display: flex;
+            flex-direction: column;
         }
         
         .project-info h3 {
@@ -651,6 +696,7 @@
         .project-info p {
             color: var(--gray);
             margin-bottom: 15px;
+            flex-grow: 1;
         }
         
         .project-tags {
@@ -667,6 +713,241 @@
             font-size: 0.8rem;
             margin-right: 8px;
             margin-bottom: 8px;
+        }
+        
+        /* Donation Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .donation-modal {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-overlay.active .donation-modal {
+            transform: translateY(0);
+        }
+        
+        .dark-mode .donation-modal {
+            background: var(--darker);
+            color: var(--dark);
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            z-index: 10;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+        
+        .modal-close:hover {
+            background: var(--light-gray);
+            color: var(--dark);
+        }
+        
+        .donation-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .donation-header h3 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .donation-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .donation-option {
+            background: #f7f7f7;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .dark-mode .donation-option {
+            background: #2d3748;
+        }
+        
+        .donation-option:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .donation-option.active {
+            border-color: var(--primary);
+            background-color: rgba(56, 60, 247, 0.1);
+        }
+        
+        .dark-mode .donation-option.active {
+            background-color: rgba(129, 140, 248, 0.2);
+        }
+        
+        .donation-option-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            background: var(--primary);
+            color: white;
+        }
+        
+        .donation-option-content {
+            flex: 1;
+            text-align: left;
+        }
+        
+        .donation-option-content h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+        
+        .donation-option-content p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 0;
+        }
+        
+        .payment-details {
+            background: #f7f7f7;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+        }
+        
+        .dark-mode .payment-details {
+            background: #2d3748;
+        }
+        
+        .payment-details.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .payment-details p {
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .payment-details strong {
+            color: var(--dark);
+        }
+        
+        .payment-instructions {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .payment-instructions h5 {
+            margin-bottom: 10px;
+            color: var(--dark);
+            text-align: left;
+        }
+        
+        .payment-instructions ol {
+            padding-left: 20px;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+        
+        .payment-instructions li {
+            margin-bottom: 8px;
+            color: var(--gray);
+        }
+        
+        .donation-note {
+            text-align: center;
+            font-style: italic;
+            color: var(--gray);
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .donation-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .btn-payment {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-payment:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
         
         /* Contact Section */
@@ -749,7 +1030,9 @@
         }
 
         .dark-mode .form-control {
-            background: var(--light);
+            background: #2d3748;
+            border-color: #4a5568;
+            color: var(--dark);
         }
         
         .form-control:focus {
@@ -833,6 +1116,88 @@
             padding-top: 20px;
             width: 100%;
             color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .copyright a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: #8b5cf6;
+        }
+        
+        .copyright .fab {
+            margin-right: 5px;
+        }
+        
+        /* Coffee button in footer for mobile - Updated to match website color */
+        .coffee-btn-footer {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 15px 0;
+            cursor: pointer;
+        }
+        
+        .coffee-btn-footer:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Copy button styles */
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: var(--primary-dark);
+        }
+        
+        .copied-message {
+            color: green;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .mobile-option {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .dark-mode .mobile-option {
+            border-color: #4a5568;
+        }
+        
+        .mobile-option:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        /* Custom X icon style */
+        .x-icon {
+            font-weight: bold;
+            font-size: 1.1em;
         }
         
         /* Responsive Design - Media Queries */
@@ -971,6 +1336,27 @@
             .social-link {
                 margin: 5px;
             }
+            
+            /* Modal adjustments */
+            .donation-modal {
+                padding: 20px;
+            }
+            
+            .donation-header h3 {
+                font-size: 1.5rem;
+            }
+            
+            .donation-actions {
+                flex-direction: column;
+            }
+            
+            .payment-details p {
+                flex-direction: column;
+            }
+            
+            .payment-details strong {
+                margin-bottom: 3px;
+            }
         }
         
         /* Extra small devices (portrait phones, less than 576px) */
@@ -1039,6 +1425,39 @@
             .section-title p {
                 padding: 0 10px;
             }
+            
+            /* Modal adjustments */
+            .donation-modal {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .donation-header h3 {
+                font-size: 1.3rem;
+            }
+            
+            .donation-option {
+                padding: 12px;
+            }
+            
+            .donation-option-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+            
+            .payment-details {
+                padding: 15px;
+            }
+            
+            .payment-instructions ol {
+                padding-left: 15px;
+            }
+            
+            .copy-btn {
+                margin-left: 5px;
+                padding: 4px 8px;
+            }
         }
         
         /* Very small devices (less than 400px) */
@@ -1081,6 +1500,36 @@
             .contact-form {
                 padding: 20px 15px;
             }
+            
+            .donation-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+            
+            .coffee-btn-footer {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+            
+            /* Modal adjustments for very small screens */
+            .donation-modal {
+                padding: 12px;
+            }
+            
+            .donation-option {
+                padding: 10px;
+            }
+            
+            .donation-option-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .payment-details {
+                padding: 12px;
+            }
         }
         
         /* Loading Screen */
@@ -1104,7 +1553,7 @@
             height: 120px;
             margin-bottom: 20px;
             border-radius: 50%;
-
+            
             display: flex;
             justify-content: center;
             align-items: center;
@@ -1123,6 +1572,7 @@
             font-size: 1.5rem;
             font-weight: 700;
             margin-top: 20px;
+            text-align: center;
         }
         
         .loading-spinner {
@@ -1184,49 +1634,10 @@
                 border-width: 3px;
             }
         }
-        
-        .copyright {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            width: 100%;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .copyright a {
-            color: rgba(255, 255, 255, 0.9);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .copyright a:hover {
-            color: #8b5cf6;
-        }
-        
-        .copyright .fab {
-            margin-right: 5px;
-        }
-        
-        /* Responsive design for copyright */
-        @media (max-width: 768px) {
-            .copyright {
-                font-size: 0.9rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .copyright {
-                font-size: 0.8rem;
-                padding: 0 10px;
-            }
-            
-            .copyright p {
-                margin-bottom: 10px;
-            }
-        }
-</style>
+    </style>
 </head>
-<body>
-        <!-- Loading Screen -->
+<body class="loading">
+    <!-- Loading Screen -->
     <div id="loading-screen">
         <div class="loading-logo">
             <img src="My Pics/1000225519-removebg-preview.png" alt="Loading Logo">
@@ -1238,78 +1649,81 @@
         <div class="loading-spinner"></div>
         <div class="loading-text">Loading Portfolio...</div>
     </div>
-<div id="main-content">
-    <div id="root"></div>
-</div>
+    
+    <div id="main-content">
+        <div id="root"></div>
+    </div>
+    
     <script type="text/babel">
         // React Components
         const { useState, useEffect, useRef } = React;
 
         // Floating Icons Component
-const FloatingIcons = () => {
-    const [icons] = useState([
-        '🔍', '💻', '🎨', '📱', '🚀', '⚡', '🖌️', '🎬', '📊', '🌐',
-        '🎯', '💡', '📝', '🎮', '📸', '🎵', '🎥', '🖥️', '💾', '📀',
-        '🛠️', '🔧', '📱', '📡', '🔌', '💎', '📐', '🧩', '📈', '📉',
-        '🔒', '🔓', '📌', '📍', '🖼️', '🎭', '🤖', '👨‍💻', '👩‍🎨', '📚',
-        '🎓', '🏆', '⭐', '❤️', '🔥', '✨', '🌈', '🌙', '☀️', '🌟'
-    ]);
-    
-    return (
-        <div className="floating-icons">
-            {icons.map((icon, index) => (
-                <div 
-                    key={index}
-                    className="floating-icon"
-                    style={{
-                        top: `${Math.random() * 100}%`,
-                        left: `${Math.random() * 100}%`,
-                        animationDelay: `${Math.random() * 15}s`,
-                        animationDuration: `${15 + Math.random() * 10}s`,
-                        fontSize: `${20 + Math.random() * 20}px`,
-                        opacity: `${0.2 + Math.random() * 0.3}`
-                    }}
-                >
-                    {icon}
+        const FloatingIcons = () => {
+            const [icons] = useState([
+                '🔍', '💻', '🎨', '📱', '🚀', '⚡', '🖌️', '🎬', '📊', '🌐',
+                '🎯', '💡', '📝', '🎮', '📸', '🎵', '🎥', '🖥️', '💾', '📀',
+                '🛠️', '🔧', '📱', '📡', '🔌', '💎', '📐', '🧩', '📈', '📉',
+                '🔒', '🔓', '📌', '📍', '🖼️', '🎭', '🤖', '👨‍💻', '👩‍🎨', '📚',
+                '🎓', '🏆', '⭐', '❤️', '🔥', '✨', '🌈', '🌙', '☀️', '🌟'
+            ]);
+            
+            return (
+                <div className="floating-icons">
+                    {icons.map((icon, index) => (
+                        <div 
+                            key={index}
+                            className="floating-icon"
+                            style={{
+                                top: `${Math.random() * 100}%`,
+                                left: `${Math.random() * 100}%`,
+                                animationDelay: `${Math.random() * 15}s`,
+                                animationDuration: `${15 + Math.random() * 10}s`,
+                                fontSize: `${20 + Math.random() * 20}px`,
+                                opacity: `${0.2 + Math.random() * 0.3}`
+                            }}
+                        >
+                            {icon}
+                        </div>
+                    ))}
                 </div>
-            ))}
-        </div>
             );
-            };
+        };
 
         // Achievement Data
         const achievementData = [
-              {
+            {
                 id: 1,
                 title: "Teens in AI",
-                description: "Received special recognition for participating in the Global Teens in AI from the African Tech Innovation Council.",
+                description: "Received special recognition for participating in the Global Techathon during the 2025 International Womens Day(#IWD) Celebration from the Teens In AI.",
                 date: "March - May 2025",
-                image: "https://placehold.co/600x400/6366f1/FFFFFF?text=Teens+In+AI"
+                image: "My Pics/Screenshot 2025-09-03 163945.png"
             },
-
-            {
+             {
                 id: 2,
+                title: "Hackathon Finalist",
+                description: "Recognition in participating in the University of Ghana Tekyer3mapa Hackathon for developing an innovative platform.",
+                date: "March 2025",
+                image: "My Pics/cert.jpeg"
+            },
+            {
+                id: 3,
                 title: "Best Video Editing Project",
-                description: "Won first place in Abeka SDA Church's annual digital media competition for my innovative video editing techniques.",
+                description: "Won second place in Abeka SDA Church's annual digital media competition for my innovative video editing techniques.",
                 date: "June 2023",
                 image: "https://placehold.co/600x400/4a6cf7/FFFFFF?text=Video+Editing"
             },
-           
+
             {
-                id: 3,
+                id: 4,
                 title: "Graphic Design Excellence Award",
-                description: "Recognized for outstanding creativity in graphic design by the Ghana Design Association.",
+                description: "Recognized for outstanding creativity in graphic design by the North Anum District Design Association.",
                 date: "February 2023",
                 image: "https://placehold.co/600x400/ec4899/FFFFFF?text=Graphic+Design"
             },
+           
+
             {
-                id: 4,
-                title: "Hackathon Finalist",
-                description: "Placed in the top 5 teams at the National University Hackathon for developing an innovative educational platform.",
-                date: "March 2025",
-                image: "https://placehold.co/600x400/4a6cf7/FFFFFF?text=Hackathon"
-            },
-           {
                 id: 5,
                 title: "Frontend Development Certification",
                 description: "Completed advanced HTML5 development course with honors, building multiple responsive web applications.",
@@ -1317,6 +1731,171 @@ const FloatingIcons = () => {
                 image: "https://placehold.co/600x400/6366f1/FFFFFF?text=React+Dev"
             }
         ];
+
+        // Donation Modal Component
+        const DonationModal = ({ isOpen, onClose }) => {
+            const [selectedOption, setSelectedOption] = useState('gcb');
+            const [copiedNumber, setCopiedNumber] = useState(null);
+            
+            useEffect(() => {
+                if (isOpen) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = 'auto';
+                }
+                
+                return () => {
+                    document.body.style.overflow = 'auto';
+                };
+            }, [isOpen]);
+            
+            const handleOptionSelect = (option) => {
+                setSelectedOption(option);
+            };
+            
+            const copyToClipboard = (number) => {
+                navigator.clipboard.writeText(number).then(() => {
+                    setCopiedNumber(number);
+                    setTimeout(() => setCopiedNumber(null), 2000);
+                }).catch(err => {
+                    console.error('Failed to copy: ', err);
+                });
+            };
+            
+            if (!isOpen) return null;
+            
+            return (
+                <div className="modal-overlay active" onClick={onClose}>
+                    <div className="donation-modal" onClick={(e) => e.stopPropagation()}>
+                        <button className="modal-close" onClick={onClose}>
+                            <i className="fas fa-times"></i>
+                        </button>
+                        <div className="donation-header">
+                            <h3>Support My Work</h3>
+                            <p>Choose your preferred payment method</p>
+                        </div>
+                        <div className="donation-options">
+                            <div 
+                                className={`donation-option ${selectedOption === 'gcb' ? 'active' : ''}`} 
+                                onClick={() => handleOptionSelect('gcb')}
+                            >
+                                <div className="donation-option-icon">
+                                    <i className="fas fa-university"></i>
+                                </div>
+                                <div className="donation-option-content">
+                                    <h4>Bank Transfer (GCB)</h4>
+                                    <p>Ghana Commercial Bank transfer</p>
+                                </div>
+                            </div>
+                            
+                            <div 
+                                className={`donation-option ${selectedOption === 'paypal' ? 'active' : ''}`} 
+                                onClick={() => handleOptionSelect('paypal')}
+                            >
+                                <div className="donation-option-icon">
+                                    <i className="fab fa-paypal"></i>
+                                </div>
+                                <div className="donation-option-content">
+                                    <h4>PayPal</h4>
+                                    <p>International payments via PayPal</p>
+                                </div>
+                            </div>
+                            
+                            <div 
+                                className={`donation-option ${selectedOption === 'mobile' ? 'active' : ''}`} 
+                                onClick={() => handleOptionSelect('mobile')}
+                            >
+                                <div className="donation-option-icon">
+                                    <i className="fas fa-mobile-alt"></i>
+                                </div>
+                                <div className="donation-option-content">
+                                    <h4>Mobile Money</h4>
+                                    <p>MTN, Telecel</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {/* GCB Payment Details */}
+                        <div className={`payment-details ${selectedOption === 'gcb' ? 'active' : ''}`}>
+                            <p><strong>Bank Name:</strong> Ghana Commercial Bank</p>
+                            <p><strong>Account Name:</strong> Shadrack Tweneboah Koduah Addofo</p>
+                            <p><strong>Account Number:</strong> 8011250019416</p>
+                            <p><strong>Branch:</strong> Legon Branch</p>
+                            <p><strong>Reference:</strong> Portfolio Support</p>
+                            <div className="payment-instructions">
+                                <h5>Transfer Instructions:</h5>
+                                <ol>
+                                    <li>Log in to your mobile banking app</li>
+                                    <li>Select "Transfer to Other Banks"</li>
+                                    <li>Choose GCB as the recipient bank</li>
+                                    <li>Enter the account details above</li>
+                                    <li>Add "Portfolio Support" as reference</li>
+                                    <li>Confirm and complete the transaction</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        {/* PayPal Payment Details */}
+                        <div className={`payment-details ${selectedOption === 'paypal' ? 'active' : ''}`}>
+                            <p><strong>PayPal Email:</strong> stkaddofo@st.ug.edu.gh</p>
+                            <p><strong>Note:</strong> Send as friends and family to avoid fees</p>
+                            <div className="payment-instructions">
+                                <h5>Payment Instructions:</h5>
+                                <ol>
+                                    <li>Click the PayPal button below</li>
+                                    <li>Log in to your PayPal account</li>
+                                    <li>Enter the amount you wish to donate</li>
+                                    <li>Select "Sending to a friend" option</li>
+                                    <li>Add a note: "Portfolio Support"</li>
+                                    <li>Complete your payment</li>
+                                </ol>
+                            </div>
+                            <a href="https://www.paypal.com/paypalme/stkaddofo" className="btn-payment" target="_blank" rel="noopener noreferrer">
+                                <i className="fab fa-paypal"></i> Donate via PayPal
+                            </a>
+                        </div>
+                        
+                        {/* Mobile Money Payment Details */}
+                        <div className={`payment-details ${selectedOption === 'mobile' ? 'active' : ''}`}>
+                            <div className="mobile-option">
+                                <p><strong>MTN Mobile Money:</strong> 053 426 8869</p>
+                                <button className="copy-btn" onClick={() => copyToClipboard('0534268869')}>
+                                    Copy Number
+                                </button>
+                                {copiedNumber === '0534268869' && (
+                                    <div className="copied-message">Number copied to clipboard!</div>
+                                )}
+                            </div>
+                            <div className="mobile-option">
+                                <p><strong>Vodafone Cash:</strong> 0209 955 875</p>
+                                <button className="copy-btn" onClick={() => copyToClipboard('0209955875')}>
+                                    Copy Number
+                                </button>
+                                {copiedNumber === '0209955875' && (
+                                    <div className="copied-message">Number copied to clipboard!</div>
+                                )}
+                            </div>
+                           
+                            <p><strong>Reference:</strong> Portfolio Support</p>
+                            <div className="payment-instructions">
+                                <h5>Payment Instructions:</h5>
+                                <ol>
+                                    <li>Dial the mobile money shortcode on your phone</li>
+                                    <li>Select "Send Money" or "Transfer"</li>
+                                    <li>Enter the recipient number above</li>
+                                    <li>Enter the amount you wish to donate</li>
+                                    <li>Add "Portfolio Support" as reference</li>
+                                    <li>Enter your PIN to confirm the transaction</li>
+                                    <li>Wait for confirmation message</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <p className="donation-note">Thank you for your support! After making a payment, you can send the receipt to my email for confirmation.</p>
+                    </div>
+                </div>
+            );
+        };
 
         // Achievement Card Component
         const AchievementCard = ({ achievement }) => {
@@ -1335,7 +1914,7 @@ const FloatingIcons = () => {
         };
 
         // Navigation Component
-        const Navigation = ({ darkMode, toggleDarkMode }) => {
+        const Navigation = ({ darkMode, toggleDarkMode, openDonationModal }) => {
             const [menuActive, setMenuActive] = useState(false);
 
             return (
@@ -1361,6 +1940,9 @@ const FloatingIcons = () => {
                                 <button className="theme-toggle" onClick={toggleDarkMode}>
                                     <span></span>
                                 </button>
+                                <div className="donation-icon" onClick={openDonationModal} title="Support My Work">
+                                    <i className="fas fa-coffee"></i>
+                                </div>
                                 <div className="menu-btn" onClick={() => setMenuActive(true)}>
                                     <i className="fas fa-bars"></i>
                                 </div>
@@ -1407,7 +1989,7 @@ const FloatingIcons = () => {
                         <div className="about-content">
                             <div className="about-text">
                                 <h3>I create products that are both functional and beautiful</h3>
-                                <p>Hello! I'm Shadrack Twenewboah Koduah Addofo(S.T.K.ADDOFO), born on June 3rd. I'm currently a student at the University of Ghana,Legon Campus, where I'm pursuing my academic goals while developing my skills in technology and design.</p>
+                                <p>Hello! I'm Shadrack Tweneboah Koduah Addofo(S.T.K.ADDOFO), born on June 3rd. I'm currently a student at the University of Ghana,Legon Campus, where I'm pursuing my academic goals while developing my skills in technology and design.</p>
                                 <p>My journey in the digital world started with a passion for creativity, which led me to explore video editing and graphic design. As I delved deeper, I discovered my love for frontend development, where I can combine technical skills with design principles to create engaging web experiences.</p>
                                 <p>When I'm not coding or designing, you can find me exploring new technologies, working on personal projects, or learning new techniques to enhance my skillset.</p>
                                 <a href="#contact" className="btn">Get In Touch</a>
@@ -1511,50 +2093,50 @@ const FloatingIcons = () => {
                                 </div>
                             </div>
                             
-                            <div className="skill-category">
-                                <h3><i className="fas fa-video"></i> Video Editing</h3>
-                                <div className="skill-item">
-                                    <div className="skill-name">
-                                        <span>Adobe Premiere Pro</span>
-                                        <span>60%</span>
-                                    </div>
-                                    <div className="skill-bar">
-                                        <div className="skill-progress" style={{width: '60%'}}></div>
-                                    </div>
-                                </div>
-                                <div className="skill-item">
-                                    <div className="skill-name">
-                                        <span>After Effects</span>
-                                        <span>50%</span>
-                                    </div>
-                                    <div className="skill-bar">
-                                        <div className="skill-progress" style={{width: '50%'}}></div>
-                                    </div>
-                                </div>
-                                <div className="skill-item">
-                                    <div className="skill-name">
-                                        <span>CapCut</span>
-                                        <span>75%</span>
-                                    </div>
-                                    <div className="skill-bar">
-                                        <div className="skill-progress" style={{width: '75%'}}></div>
-                                    </div>
-                                </div>
-                                <div className="skill-item">
-                                    <div className="skill-name">
-                                        <span>Motion Graphics</span>
-                                        <span>50%</span>
-                                    </div>
-                                    <div className="skill-bar">
-                                        <div className="skill-progress" style={{width: '50%'}}></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+            <div className="skill-category">
+                <h3><i className="fas fa-video"></i> Video Editing</h3>
+                <div className="skill-item">
+                    <div className="skill-name">
+                        <span>Adobe Premiere Pro</span>
+                        <span>60%</span>
                     </div>
-                </section>
-            );
-        };
+                    <div className="skill-bar">
+                        <div className="skill-progress" style={{width: '60%'}}></div>
+                    </div>
+                </div>
+                <div className="skill-item">
+                    <div className="skill-name">
+                        <span>After Effects</span>
+                        <span>50%</span>
+                    </div>
+                    <div className="skill-bar">
+                        <div className="skill-progress" style={{width: '50%'}}></div>
+                    </div>
+                </div>
+                <div className="skill-item">
+                    <div className="skill-name">
+                        <span>CapCut</span>
+                        <span>75%</span>
+                    </div>
+                    <div className="skill-bar">
+                        <div className="skill-progress" style={{width: '75%'}}></div>
+                    </div>
+                </div>
+                <div className="skill-item">
+                    <div className="skill-name">
+                        <span>Motion Graphics</span>
+                        <span>50%</span>
+                    </div>
+                    <div className="skill-bar">
+                        <div className="skill-progress" style={{width: '50%'}}></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+);
+};
 
         // Achievements Section Component
         const AchievementsSection = () => {
@@ -1690,7 +2272,7 @@ const FloatingIcons = () => {
                                     </div>
                                     <div className="contact-details">
                                         <h3>Email</h3>
-                                        <p>stkaddofo@st.ug.edu.gh.com</p>
+                                        <p>stkaddofo@st.ug.edu.gh</p>
                                     </div>
                                 </div>
                                 
@@ -1700,7 +2282,7 @@ const FloatingIcons = () => {
                                     </div>
                                     <div className="contact-details">
                                         <h3>Phone</h3>
-                                        <p>+233 534-268-869 / +233 209-955-675</p>
+                                        <p>+233 534-268-869 / +233 209-955-875</p>
                                     </div>
                                 </div>
                             </div>
@@ -1772,7 +2354,7 @@ const FloatingIcons = () => {
         };
 
         // Footer Component
-        const Footer = () => {
+        const Footer = ({ openDonationModal }) => {
             return (
                 <footer>
                     <div className="container">
@@ -1789,29 +2371,33 @@ const FloatingIcons = () => {
                             </ul>
                             
                             <div className="social-links">
-                                
+
                                 <a href="#" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-facebook-f"></i></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-twitter"></i></a>
-                                <a href="https://wa.me/+233534268869" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-whatsapp"></i></a><br />
+                                <a href="https://x.com/HomedaPa" target="_blank" rel="noopener noreferrer" className="social-link"><span className="x-icon">𝕏</span></a>
+                                <a href="https://wa.me/+233534268869" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-whatsapp"></i></a>
                                 <a href="https://www.tiktok.com/@homedapa" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-tiktok"></i></a>
                             </div>
                             <div className="social-links">
-                                <a href="https://www.instagram.com/@homedapa.043" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-instagram"></i></a>
-                                <a href="https://www.snapchat.com/add/@homedapa" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-snapchat"></i></a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-linkedin-in"></i></a>
-                                <a href="https://www.github.com/shoshaUg" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-github"></i></a>
-                                
+                                <a href="https://www.instagram.com/homedapa.043" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-instagram"></i></a>
+                                <a href="https://www.snapchat.com/add/homedapa" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-snapchat"></i></a>
+                                <a href="https://www.linkedin.com/in/shadrack-tweneboah-koduah-addofo-712763353/" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.github.com/shoshaug" target="_blank" rel="noopener noreferrer" className="social-link"><i className="fab fa-github"></i></a>
                             </div>
                             
-                              <div class="copyright">
+                            {/* Coffee button in footer for mobile */}
+                            <a href="#!" className="coffee-btn-footer" onClick={openDonationModal}>
+                                <i className="fas fa-coffee"></i> Buy Me Coffee
+                            </a>
+                            
+                            <div className="copyright">
                                 <p>&copy; 2025 S.T.K.ADDOFO . All Rights Reserved.</p>
-                                <h5 >
-                                Powered by 
-                                <a href="https://github.com/shoshaUg" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-                            </h5>
-                              </div>
+                                <h5>
+                                    Powered by 
+                                    <a href="https://github.com/shoshaug" target="_blank" rel="noopener noreferrer">
+                                        <i className="fab fa-github"></i> GitHub
+                                    </a>
+                                </h5>
+                            </div>
                         </div>
                     </div>
                 </footer>
@@ -1821,6 +2407,7 @@ const FloatingIcons = () => {
         // Main App Component
         const App = () => {
             const [darkMode, setDarkMode] = useState(false);
+            const [donationModalOpen, setDonationModalOpen] = useState(false);
 
             useEffect(() => {
                 if (darkMode) {
@@ -1832,6 +2419,14 @@ const FloatingIcons = () => {
 
             const toggleDarkMode = () => {
                 setDarkMode(!darkMode);
+            };
+            
+            const openDonationModal = () => {
+                setDonationModalOpen(true);
+            };
+            
+            const closeDonationModal = () => {
+                setDonationModalOpen(false);
             };
 
             // Animate skill bars on scroll
@@ -1870,20 +2465,26 @@ const FloatingIcons = () => {
 
             return (
                 <div className="App">
-                    <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+                    <Navigation 
+                        darkMode={darkMode} 
+                        toggleDarkMode={toggleDarkMode} 
+                        openDonationModal={openDonationModal} 
+                    />
                     <HeroSection />
                     <AboutSection />
                     <SkillsSection />
                     <AchievementsSection />
                     <ProjectsSection />
                     <ContactSection />
-                    <Footer />
+                    <Footer openDonationModal={openDonationModal} />
+                    <DonationModal isOpen={donationModalOpen} onClose={closeDonationModal} />
                 </div>
             );
         };
 
+        // Loading functionality - Fixed to prevent scrolling
         window.addEventListener('load', function() {
-            // Add a small delay for better UX (so loading screen doesn't flash too quickly)
+            // Add a small delay for better UX
             setTimeout(function() {
                 const loadingScreen = document.getElementById('loading-screen');
                 const mainContent = document.getElementById('main-content');
@@ -1897,8 +2498,10 @@ const FloatingIcons = () => {
                 // Remove loading screen from DOM after fade out completes
                 setTimeout(function() {
                     loadingScreen.style.display = 'none';
-                }, 500); // Match this with the CSS transition time
-            }, 3000); // Adjust this time as needed (1500 = 1.5 seconds)
+                    document.body.classList.remove('loading');
+                    document.body.style.overflow = 'auto'; // Re-enable scrolling
+                }, 500);
+            }, 2000); // Reduced from 3000 to 2000 for better UX
         });
         
         // Fallback: if page takes too long to load, still show content
@@ -1906,15 +2509,17 @@ const FloatingIcons = () => {
             const loadingScreen = document.getElementById('loading-screen');
             const mainContent = document.getElementById('main-content');
             
-            if (loadingScreen.style.display !== 'none') {
+            if (loadingScreen && loadingScreen.style.display !== 'none') {
                 loadingScreen.style.opacity = '0';
                 mainContent.style.opacity = '1';
                 
                 setTimeout(function() {
                     loadingScreen.style.display = 'none';
+                    document.body.classList.remove('loading');
+                    document.body.style.overflow = 'auto'; // Re-enable scrolling
                 }, 500);
             }
-        }, 5000); // 5 second fallback
+        }, 7000); // Reduced from 10000 to 7000 for better UX
 
         // Render the App
         ReactDOM.render(<App />, document.getElementById('root'));
