@@ -87,7 +87,7 @@
         }
         
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 15px;
@@ -447,7 +447,7 @@
             content: '';
             position: absolute;
             width: 60%;
-            height: auto;
+            height: 300;
             border: 3px solid var(--primary);
             border-radius: var(--border-radius);
             top: 15px;
@@ -475,6 +475,7 @@
           }
           
           .about-image {
+            width: 60%;
             height: 300px;
             margin-top: 2rem;
           }
@@ -966,7 +967,7 @@
             background: var(--primary);
             color: white;
             border: none;
-            padding: 12px 20px;
+            padding: 8px 15px;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 500;
@@ -1170,12 +1171,12 @@
             align-items: center;
             background: var(--primary);
             color: white;
-            padding: 10px 16px;
+            padding: 8px 14px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgb(255, 0, 0);
             margin: 15px 0;
             cursor: pointer;
         }
@@ -1183,21 +1184,10 @@
         .coffee-btn-footer:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 6px 12px rgb(255, 255, 255);
         }
         
-        /* Copy button styles */
-        .copy-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-            margin-left: 10px;
-            transition: all 0.3s ease;
-        }
+
         
         .copy-btn:hover {
             background: var(--primary-dark);
@@ -1261,8 +1251,9 @@
             }
             
             .about-image:before {
-                width: 80%;
+                width: 60%;
                 left: 10%;
+                height: 150px;
             }
             
             .contact-container {
@@ -1422,7 +1413,7 @@
             }
             
             .about-image img {
-                max-width: 85%;
+                max-width: 45%;
             }
             
             .floating-icon {
@@ -1460,7 +1451,7 @@
             
             /* Modal adjustments */
             .donation-modal {
-                width: 80%;
+                width: 70%;
                 height:75vh;
                 padding: 15px;
             }
@@ -2400,7 +2391,7 @@ const AboutSection = () => {
                             </div>
                             
                             {/* Coffee button in footer for mobile */}
-                            <a href="https://paystack.shop/pay/stkaddofo" className="coffee-btn-footer" >
+                            <a href="https://paystack.shop/pay/stkaddofo" target="_blank" className="coffee-btn-footer" >
                                 <i className="fas fa-coffee"></i> Buy Me Coffee
                             </a>
                             
