@@ -20,6 +20,13 @@
     <meta name="twitter:description" content="Frontend Developer, Video Editor and Graphic Designer">
     <meta name="twitter:image" content="My Pics/1000225519-removebg-preview.png">
     
+    <link rel="icon" type="image/png" href="/s.t.k.addofo/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/s.t.k.addofo/favicon.svg" />
+    <link rel="shortcut icon" href="/s.t.k.addofo/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/s.t.k.addofo/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="S.T.K.ADDOFO" />
+    <link rel="manifest" href="/s.t.k.addofo/site.webmanifest" />
+
     <link rel="icon" type="image/png" sizes="32x32" href="My Pics/1000225519-removebg-preview.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Add X/Twitter icon from Font Awesome -->
@@ -2021,7 +2028,7 @@ const AboutSection = () => {
         );
         setFadeState('fadeIn');
       }, 1500); // This should match the CSS transition time
-    }, 7000); // Change image every 5 seconds
+    }, 5000); // Change image every 5 seconds
 
     return () => clearInterval(interval);
   }, [images.length]);
