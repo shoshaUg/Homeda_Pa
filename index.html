@@ -772,7 +772,7 @@
         .donation-modal {
             background: white;
             border-radius: 15px;
-            width: 90%;
+            width: 75%;
             max-width: 500px;
             padding: 30px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -1460,7 +1460,7 @@
             
             /* Modal adjustments */
             .donation-modal {
-                width: 95%;
+                width: 80%;
                 padding: 15px;
             }
             
@@ -1666,6 +1666,59 @@
                 border-width: 3px;
             }
         }
+        /* Add these styles to your existing CSS */
+.paystack-option {
+    display: flex;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    border: 2px solid #4239eb;
+}
+
+.paystack-icon {
+    font-size: 2.5rem;
+    color: #4239eb;
+    margin-right: 1.5rem;
+}
+
+.paystack-content h4 {
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.paystack-content p {
+    color: #6c757d;
+    margin: 0;
+}
+
+.btn-paystack {
+    display: inline-block;
+    background: #4239eb;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 170, 255, 0.3);
+}
+
+.btn-paystack:hover {
+    background: #4239eb;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 170, 255, 0.4);
+    color: white;
+}
+
+.btn-paystack i {
+    margin-right: 0.5rem;
+}
+        
+
     </style>
 </head>
 <body class="loading">
@@ -1757,170 +1810,66 @@
             
         ];
 
-        // Donation Modal Component
-        const DonationModal = ({ isOpen, onClose }) => {
-            const [selectedOption, setSelectedOption] = useState('gcb');
-            const [copiedNumber, setCopiedNumber] = useState(null);
-            
-            useEffect(() => {
-                if (isOpen) {
-                    document.body.style.overflow = 'hidden';
-                } else {
-                    document.body.style.overflow = 'auto';
-                }
+        // Donation Modal Component with Paystack
+const DonationModal = ({ isOpen, onClose }) => {
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+        
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isOpen]);
+    
+    if (!isOpen) return null;
+    
+    return (
+        <div className="modal-overlay active" onClick={onClose}>
+            <div className="donation-modal" onClick={(e) => e.stopPropagation()}>
+                <button className="modal-close" onClick={onClose}>
+                    <i className="fas fa-times"></i>
+                </button>
+                <div className="donation-header">
+                    <h3>Buy Me a Coffee</h3>
+                    <p>Support my work with a quick and secure payment</p>
+                </div>
                 
-                return () => {
-                    document.body.style.overflow = 'auto';
-                };
-            }, [isOpen]);
-            
-            const handleOptionSelect = (option) => {
-                setSelectedOption(option);
-            };
-            
-            const copyToClipboard = (number) => {
-                navigator.clipboard.writeText(number).then(() => {
-                    setCopiedNumber(number);
-                    setTimeout(() => setCopiedNumber(null), 2000);
-                }).catch(err => {
-                    console.error('Failed to copy: ', err);
-                });
-            };
-            
-            if (!isOpen) return null;
-            
-            return (
-                <div className="modal-overlay active" onClick={onClose}>
-                    <div className="donation-modal" onClick={(e) => e.stopPropagation()}>
-                        <button className="modal-close" onClick={onClose}>
-                            <i className="fas fa-times"></i>
-                        </button>
-                        <div className="donation-header">
-                            <h3>Support My Work</h3>
-                            <p>Choose your preferred payment method</p>
-                        </div>
-                        <div className="donation-options">
-                            <div 
-                                className={`donation-option ${selectedOption === 'gcb' ? 'active' : ''}`} 
-                                onClick={() => handleOptionSelect('gcb')}
-                            >
-                                <div className="donation-option-icon">
-                                    <i className="fas fa-university"></i>
-                                </div>
-                                <div className="donation-option-content">
-                                    <h4>Bank Transfer (GCB)</h4>
-                                    <p>Ghana Commercial Bank transfer</p>
-                                </div>
-                            </div>
-                            
-                            <div 
-                                className={`donation-option ${selectedOption === 'paypal' ? 'active' : ''}`} 
-                                onClick={() => handleOptionSelect('paypal')}
-                            >
-                                <div className="donation-option-icon">
-                                    <i className="fab fa-paypal"></i>
-                                </div>
-                                <div className="donation-option-content">
-                                    <h4>PayPal</h4>
-                                    <p>International payments via PayPal</p>
-                                </div>
-                            </div>
-                            
-                            <div 
-                                className={`donation-option ${selectedOption === 'mobile' ? 'active' : ''}`} 
-                                onClick={() => handleOptionSelect('mobile')}
-                            >
-                                <div className="donation-option-icon">
-                                    <i className="fas fa-mobile-alt"></i>
-                                </div>
-                                <div className="donation-option-content">
-                                    <h4>Mobile Money</h4>
-                                    <p>MTN, Telecel</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {/* GCB Payment Details */}
-                        <div className={`payment-details ${selectedOption === 'gcb' ? 'active' : ''}`}>
-                            <p><strong>Bank Name:</strong> Ghana Commercial Bank</p>
-                            <p><strong>Account Name:</strong> Shadrack Tweneboah Koduah Addofo</p>
-                            <p><strong>Account Number:</strong> 8011250019416</p>
-                            <p><strong>Branch:</strong> Legon Branch</p>
-                            <p><strong>Reference:</strong> Portfolio Support</p>
-                            <div className="payment-instructions">
-                                <h5>Transfer Instructions:</h5>
-                                <ol>
-                                    <li>Log in to your mobile banking app</li>
-                                    <li>Select "Transfer to Other Banks"</li>
-                                    <li>Choose GCB as the recipient bank</li>
-                                    <li>Enter the account details above</li>
-                                    <li>Add "Portfolio Support" as reference</li>
-                                    <li>Confirm and complete the transaction</li>
-                                </ol>
-                            </div>
-                        </div>
-                        
-                        {/* PayPal Payment Details */}
-                        <div className={`payment-details ${selectedOption === 'paypal' ? 'active' : ''}`}>
-                            <p><strong>PayPal Email:</strong> stkaddofo@st.ug.edu.gh</p>
-                            <p><strong>Note:</strong> Send as friends and family to avoid fees</p>
-                            <div className="payment-instructions">
-                                <h5>Payment Instructions:</h5>
-                                <ol>
-                                    <li>Click the PayPal button below</li>
-                                    <li>Log in to your PayPal account</li>
-                                    <li>Enter the amount you wish to donate</li>
-                                    <li>Select "Sending to a friend" option</li>
-                                    <li>Add a note: "Portfolio Support"</li>
-                                    <li>Complete your payment</li>
-                                </ol>
-                            </div>
-                            <a href="https://www.paypal.com/paypalme/stkaddofo" className="btn-payment" target="_blank" rel="noopener noreferrer">
-                                <i className="fab fa-paypal"></i> Donate via PayPal
-                            </a>
-                        </div>
-                        
-                        {/* Mobile Money Payment Details */}
-                        <div className={`payment-details ${selectedOption === 'mobile' ? 'active' : ''}`}>
-                            <div className="mobile-option">
-                                <p><strong>MTN Mobile Money:</strong> 053 426 8869(Not Available at the Moment)</p>
-                                <button className="copy-btn" onClick={() => copyToClipboard('0534268869')}>
-                                    Copy Number
-                                </button>
-                                {copiedNumber === '0534268869' && (
-                                    <div className="copied-message">Number copied to clipboard!</div>
-                                )}
-                            </div>
-                            <div className="mobile-option">
-                                <p><strong>Vodafone Cash:</strong> 0209 955 875</p>
-                                <button className="copy-btn" onClick={() => copyToClipboard('0209955875')}>
-                                    Copy Number
-                                </button>
-                                {copiedNumber === '0209955875' && (
-                                    <div className="copied-message">Number copied to clipboard!</div>
-                                )}
-                            </div>
-                           
-                            <p><strong>Reference:</strong> Portfolio Support</p>
-                            <div className="payment-instructions">
-                                <h5>Payment Instructions:</h5>
-                                <ol>
-                                    <li>Dial the mobile money shortcode on your phone</li>
-                                    <li>Select "Send Money" or "Transfer"</li>
-                                    <li>Enter the recipient number above</li>
-                                    <li>Enter the amount you wish to donate</li>
-                                    <li>Add "Portfolio Support" as reference</li>
-                                    <li>Enter your PIN to confirm the transaction</li>
-                                    <li>Wait for confirmation message</li>
-                                </ol>
-                            </div>
-                        </div>
-                        
-                        <p className="donation-note">Thank you for your support! After making a payment, you can send the receipt to my email for confirmation.</p>
+                <div className="paystack-option">
+                    <div className="paystack-icon">
+                        <i className="fas fa-mug-hot"></i>
+                    </div>
+                    <div className="paystack-content">
+                        <h4>Quick & Secure Payment</h4>
+                        <p>Pay with Mobile Money, Bank Transfer, or Card</p>
                     </div>
                 </div>
-            );
-        };
+                
+                <div className="payment-instructions">
+                    <p>Click the button below to complete your payment securely via Paystack</p>
+                    <a 
+                        href="https://paystack.shop/pay/stkaddofo" 
+                        className="btn-paystack" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        onClick={onClose}
+                    >
+                        <i className="fas fa-lock"></i> Support via Paystack
+                    </a>
+                    
+                </div>
+                
+                
+                <p className="donation-note">
+                    Thank you for your support! Your contribution helps me continue creating 
+                    amazing content and projects.
+                </p>
+            </div>
+        </div>
+    );
+};
 
         // Achievement Card Component
         const AchievementCard = ({ achievement }) => {
@@ -2443,7 +2392,7 @@ const AboutSection = () => {
                             </div>
                             
                             {/* Coffee button in footer for mobile */}
-                            <a href="#!" className="coffee-btn-footer" onClick={openDonationModal}>
+                            <a href="https://paystack.shop/pay/stkaddofo" className="coffee-btn-footer" >
                                 <i className="fas fa-coffee"></i> Buy Me Coffee
                             </a>
                             
