@@ -447,7 +447,32 @@
             left: 15px;
             z-index: -1;
         }
+        .fade-image {
+
+          object-fit: cover;
+          transition: opacity 1.5s ease-in-out;
+        }
         
+        .fadeIn {
+          opacity: 1;
+        }
+        
+        .fadeOut {
+          opacity: 0;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+          .about-content {
+            flex-direction: column;
+          }
+          
+          .about-image {
+            height: 300px;
+            margin-top: 2rem;
+          }
+        }
+
         /* Skills Section */
         .skills {
             padding: 100px 0;
@@ -1970,30 +1995,63 @@
             );
         };
 
-        // About Section Component
-        const AboutSection = () => {
-            return (
-                <section className="about" id="about">
-                    <div className="container">
-                        <div className="section-title">
-                            <h2>About Me</h2>
-                            <p>Get to know more about my background, education, and passions</p>
-                        </div>
-                        <div className="about-content">
-                            <div className="about-text">
-                                <h3>I create products that are both functional and beautiful</h3>
-                                <p>Hello! I'm Shadrack Tweneboah Koduah Addofo(S.T.K.ADDOFO), born on June 3rd. I'm currently a student at the University of Ghana,Legon Campus, where I'm pursuing my academic goals while developing my skills in technology and design.</p>
-                                <p>My journey in the digital world started with a passion for creativity, which led me to explore video editing and graphic design. As I delved deeper, I discovered my love for frontend development, where I can combine technical skills with design principles to create engaging web experiences.</p>
-                                <p>When I'm not coding or designing, you can find me exploring new technologies, working on personal projects, or learning new techniques to enhance my skillset.</p>
-                                <a href="#contact" className="btn">Get In Touch</a>
-                            </div>
-                            <div className="about-image">
-                                <img src="My Pics/mat.jpg" alt="About Shadrack" />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
+        // About Section Component with Fading Images
+const AboutSection = () => {
+  // Array of image paths - replace with your actual image paths
+  const images = [
+    "My Pics/IMG-20250614-WA0162.jpg",
+    "My Pics/IMG-20250620-WA0078.jpg",
+    "My Pics/image-upscaled.jpeg",
+    "My Pics/mat.jpg", // Replace with your actual image paths
+    "My Pics/IMG-20250620-WA0078.jpg"
+  ];
+  
+  const [currentImageIndex, setCurrentImageIndex] = React.useState(0);
+  const [fadeState, setFadeState] = React.useState('fadeIn');
+
+  React.useEffect(() => {
+    const interval = setInterval(() => {
+      // Start fading out
+      setFadeState('fadeOut');
+      
+      // After fade out completes, change image and fade back in
+      setTimeout(() => {
+        setCurrentImageIndex(prevIndex => 
+          prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        );
+        setFadeState('fadeIn');
+      }, 1500); // This should match the CSS transition time
+    }, 7000); // Change image every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+     return (
+     <section className="about" id="about">
+      <div className="container">
+        <div className="section-title">
+          <h2>About Me</h2>
+          <p>Get to know more about my background, education, and passions</p>
+        </div>
+        <div className="about-content">
+          <div className="about-text">
+            <h3>I create products that are both functional and beautiful</h3>
+            <p>Hello! I'm Shadrack Tweneboah Koduah Addofo(S.T.K.ADDOFO), born on June 3rd. I'm currently a student at the University of Ghana,Legon Campus, where I'm pursuing my academic goals while developing my skills in technology and design.</p>
+            <p>My journey in the digital world started with a passion for creativity, which led me to explore video editing and graphic design. As I delved deeper, I discovered my love for frontend development, where I can combine technical skills with design principles to create engaging web experiences.</p>
+            <p>When I'm not coding or designing, you can find me exploring new technologies, working on personal projects, or learning new techniques to enhance my skillset.</p>
+            <a href="#contact" className="btn">Get In Touch</a>
+          </div>
+          <div className="about-image">
+            <img 
+              src={images[currentImageIndex]} 
+              alt="About Shadrack" 
+              className={`fade-image ${fadeState}`}
+            />
+          </div>
+        </div>
+      </div>
+     </section>
+         );
         };
 
         // Skills Section Component
