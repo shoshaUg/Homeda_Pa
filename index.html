@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOMEDA_PA - PORTFOLIO</title>
+    <title>S.T.K. Addofo - Portfolio</title>
     <!-- Meta Description for SEO -->
     <meta name="description" content="Portfolio of Shadrack T.K. Addofo - Frontend Developer, Video Editor, and Graphic Designer from University of Ghana. Specializing in React, JavaScript, and creative digital solutions.">
     <meta name="keywords" content="frontend developer, react developer, javascript, web design, video editing, graphic design, ghana developer, university of ghana">
     <meta name="author" content="Shadrack T.K. Addofo">
     <meta name="image" content="image-upscaled.jpeg">
    <!-- Open Graph Tags - FIXED -->
-    <meta property="og:title" content="Homeda_Pa - Portfolio">
+    <meta property="og:title" content="S.T.K. Addofo - Portfolio">
     <meta property="og:description" content="Portfolio of Shadrack T.K. Addofo - Frontend Developer, Video Editor, and Graphic Designer from University of Ghana">
     <meta property="og:image" content="image-upscaled.jpeg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:url" content="https://stkaddofo.site">
+    <meta property="og:url" content="https://www.stkaddofo.site">
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Homeda_Pa - Portfolio">
+    <meta property="og:site_name" content="S.T.K. Addofo - Portfolio">
     
     <!-- Twitter Card Tags - FIXED -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Homeda_Pa - Portfolio">
+    <meta name="twitter:title" content="S.T.K. Addofo - Portfolio">
     <meta name="twitter:description" content="Frontend Developer, Video Editor and Graphic Designer">
     <meta name="twitter:image" content="image-upscaled.jpeg">
     <meta name="twitter:site" content="@homedapa">
@@ -34,7 +34,7 @@
     <meta name="apple-mobile-web-app-title" content="S.T.K.ADDOFO" />
     <link rel="manifest" href="/s.t.k.addofo/site.webmanifest" />
 
-    <link rel="icon" type="image/png" sizes="32x32" href="image-upscaled.jpeg">
+    <link rel="icon" type="image/png" sizes="64x64" href="image-upscaled.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Add X/Twitter icon from Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -464,7 +464,7 @@ nav {
 
 .fade-image {
     object-fit: cover;
-    transition: opacity 1.5s ease-in-out;
+    transition: opacity 1s ease-in-out;
 }
 
 .fadeIn {
@@ -1369,9 +1369,10 @@ footer {
     .btn {
         padding: 8px 17px;
         display: block;
-        width: 100%;
+        width: fit-content;
         margin-bottom: 10px;
         text-align: center;
+        
     }
     
     .btn-outline {
@@ -1461,7 +1462,8 @@ footer {
         font-weight: 300;
         font-size: 1rem;
         margin: 1rem 0;
-        display: flex; 
+        display: flex;
+        width: fit-content; 
     }    
 }
 
@@ -1477,7 +1479,7 @@ footer {
     }
     
     .hero-text h1 {
-        font-size: 1.8rem;
+        font-size: 1.9rem;
     }
     
     .hero-text p {
@@ -1986,7 +1988,7 @@ const AboutSection = () => {
           prevIndex === images.length - 1 ? 0 : prevIndex + 1
         );
         setFadeState('fadeIn');
-      }, 1500); // This should match the CSS transition time
+      }, 1000); // This should match the CSS transition time
     }, 5000); // Change image every 5 seconds
 
     return () => clearInterval(interval);
